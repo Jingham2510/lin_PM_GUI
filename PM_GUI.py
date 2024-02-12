@@ -6,16 +6,7 @@ Description: USB Power Meter GUI - allows a user to continually check the measur
 
 
 
-"""
-TODO:
--Create GUI (in PyQt)
-    -Menu letting the user choose the avg, offset, frequency and delay
--COnnect to PM (i.e. load Resaoure Manager - pick the usb power meter from a list of valid ones)
 
--Calculate avergae determined by the user input.
-
-
-"""
 
 from PyQt6 import *
 from PyQt6.QtWidgets import *
@@ -197,6 +188,7 @@ class main_window(QWidget):
     #Connects to a Power Meter and sets it up- returns the power meter object
     def connectToPM(self):
 
+        
         #Check if a valid power meter is connected
         det_rm = pv.ResourceManager()
         res_list = det_rm.list_resources()
