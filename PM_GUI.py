@@ -10,13 +10,15 @@ Description: USB Power Meter GUI - allows a user to continually check the measur
 
 from PyQt6 import *
 from PyQt6.QtWidgets import *
-from PyQt6.QtGui import QPalette, QColor, QFont
-from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtGui import QFont
+from PyQt6.QtCore import Qt
 import sys
 import pyvisa as pv 
 import time
 from threading import Thread
 import queue
+import os
+
 
 
 q = queue.Queue()
@@ -155,6 +157,7 @@ class main_window(QWidget):
         self.errLabel = QLabel("PRESS A BUTTON")
         self.errLabel.setFont(QFont("Arial", 34))
         self.errLabel.setStyleSheet("color: rgb(255,199,62);")
+        self.errLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         q.put(self.errLabel)
         layout.addWidget(self.errLabel, 1, 3, 3, 5)
 
@@ -182,6 +185,8 @@ class main_window(QWidget):
         exitFlag = 1
 
         event.accept() 
+
+        os._exit(0)
 
 
 
@@ -214,7 +219,7 @@ class main_window(QWidget):
 
         
         if not pm_detected:
-            self.errLabel.setText("No Power Meter Detected")
+            self.errLabel.setText("No PM detected - Restart App")
             self.errLabel.setStyleSheet("color: red")
             return False
 
@@ -375,6 +380,7 @@ class main_window(QWidget):
 
         stopFlag = 1
         self.stopButton.setDisabled(True)
+        os._exit(0)
 
 
 
