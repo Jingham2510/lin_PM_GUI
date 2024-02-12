@@ -7,5 +7,6 @@ An updated version of a Visual Basic for Applications script, which hung excel m
 
 Uses multithreading to take readings continually, while also updating the GUI.
 
-Deisgned to work with specific model of USB power meters only. 
+Designed to work with specific model of USB power meters only. 
 
+NOTE: I did not choose the GUI colour scheme.
